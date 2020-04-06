@@ -1,3 +1,9 @@
 alohaVenv
 .vscode
 __pycache__
+.eggs
+build
+dist
+setup.py
+dist_Versions
+assests

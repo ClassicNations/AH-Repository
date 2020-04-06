@@ -30,35 +30,35 @@ class lowerBead(problemSet):
         #The structure of "problemSteps" will act like an rpn calculator
         #Number -> Operand -> Number... [3, -, 4, +, 3, -]
         self.problemSteps = []
+        self.finalAnswer = []
         self.creatingProblem()
 
     def creatingProblem(self):
         #Creating the final Answer - the abacaus can only have a max answer of 4 and a min answer of 0
-        finalAnswer = []
 
         counter = 0
         #Creating first problem of the set: The operand is ALWAYS positive, aloha dosent want negative numbers
         self.problemSteps.append(random.randrange(1,5))
-        finalAnswer.append(self.problemSteps[0])
+        self.finalAnswer.append(self.problemSteps[0])
 
         while True:
             testInput = random.randrange(1,5)
             testOperand = self.createOperand(random.randrange(0,3))
             
             if(testOperand == '+'):
-                if(((sum(finalAnswer) + testInput) <= 4)):
+                if(((sum(self.finalAnswer) + testInput) <= 4)):
                     self.problemSteps.append(testOperand)
                     self.problemSteps.append(testInput)
-                    finalAnswer.append(testInput)
+                    self.finalAnswer.append(testInput)
                     counter = counter + 2
                 else:
                     pass
 
             elif(testOperand == '-'):
-                if(((sum(finalAnswer) - testInput) >= 0)):
+                if(((sum(self.finalAnswer) - testInput) >= 0)):
                     self.problemSteps.append(testOperand)
                     self.problemSteps.append(-1* testInput)
-                    finalAnswer.append(-1 * testInput)
+                    self.finalAnswer.append(-1 * testInput)
                     counter = counter + 2
                 else:
                     pass
@@ -67,6 +67,5 @@ class lowerBead(problemSet):
             #Condition for loop
             if(len(self.problemSteps) == self.steps):
                 break
-
 
 
